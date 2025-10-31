@@ -27,3 +27,35 @@ function onDeviceReady() {
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
     document.getElementById('deviceready').classList.add('ready');
 }
+
+const gifts = document.querySelectorAll('.gift');
+
+    gifts.forEach(gift => {
+        gift.addEventListener('click', () => {
+            // Створення повідомлення
+            const wishMessage = document.createElement('div');
+            wishMessage.textContent = "Вітаю з Новим Роком! Лисенок, я впевнений, цей новий рік буде тільки краще ніж попередній. Не зважаючи на будь-які прегради, я завжди буду поруч та підтримаю тебе) Так, я інколи буває веду себе як дитина, але таке я можу дозволити лише з тобою) З Новим Роком :3";
+            wishMessage.style.position = 'absolute';
+            wishMessage.style.top = '70px'; // Розташування нижче подарунка
+            wishMessage.style.left = '50%'; // Відцентровка
+            wishMessage.style.transform = 'translateX(-50%)';
+            wishMessage.style.backgroundColor = '#fff';
+            wishMessage.style.color = '#800080'; // Темно-фіолетовий колір тексту
+            wishMessage.style.padding = '10px'; // Збільшений padding
+            wishMessage.style.borderRadius = '10px';
+            wishMessage.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.2)';
+            wishMessage.style.zIndex = '10';
+            wishMessage.style.maxWidth = '600px'; // Збільшена ширина
+            wishMessage.style.textAlign = 'center'; // Вирівнювання тексту по центру
+            wishMessage.style.fontSize = '1.2rem'; // Збільшений шрифт для кращої читабельності
+
+
+            // Додаємо повідомлення до подарунка
+            gift.appendChild(wishMessage);
+
+            // Видаляємо повідомлення через 10 секунд
+            setTimeout(() => {
+                gift.removeChild(wishMessage);
+            }, 20000);
+        });
+    });
